@@ -25,13 +25,13 @@ const News = ({ simplified }) => {
           <Select
             showSearch
             classNme="select-news"
-            placeholder="Select a Crpto"
+            placeholder="Select a Crypto"
             optionFilterProp="children"
             onChange={(value) => setNewsCategory(value)}
-            fillterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 }
+            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 }
           >
               <Option value="Cryptocurrency">Cryptocurrency</Option>
-              {data?.data?.coins.map((coin) => <Option value={coin.name}>{coin.name}</Option> )}
+              {data?.data?.coins.map((currency) => <Option value={currency.name}>{currency.name}</Option> )}
           </Select>
         </Col>
       )}
@@ -41,12 +41,12 @@ const News = ({ simplified }) => {
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title className="news-title" level={4}>{news.name}</Title>
-                <img style={{ maxWidth: '200px', maxHeight: '100px' }} src={ news?.image?.thumbnails?.contentUrl || demoImage } alt="" />
+                <img style={{ maxWidth: '200px', maxHeight: '100px' }} src={ news?.image?.thumbnail?.contentUrl || demoImage } alt="" />
               </div>
               <p>
                 {news.description.length > 100 
                 ? `${news.description.substring(0, 100)}...`
-                :news.description
+                : news.description
                 }
               </p>
               <div className="provider-container">

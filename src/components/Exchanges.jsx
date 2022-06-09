@@ -9,9 +9,9 @@ import Loader from './Loader';
 const { Text } = Typography;
 const { Panel } = Collapse;
 
-const Exchange = () => {
+const Exchanges = () => {
   const {data, isFetching} = useGetExchangesQuery();
-  const exchangeList = data?.data?.exchanges;
+  const exchangesList = data?.data?.exchanges;
 
   if (isFetching) return <Loader />;
 
@@ -24,14 +24,14 @@ const Exchange = () => {
         <Col span={6}>Change</Col>
       </Row>
       <Row>
-        {exchangeList?.map((exchange) => (
+        {exchangesList?.map((exchange) => (
           <Col span={24}>
             <Collapse>
               <Panel
-                key={exchange.id}
+                key={exchange.uuid}
                 showArrow={false}
                 header={(
-                  <Row key={exchange.id}>
+                  <Row key={exchange.uuid}>
                     <Col span={6}>
                       <Text><strong>{exchange.rank}</strong></Text>
                       <Avatar className="exchange-image" src={exchange.iconUrl} alt="" />
@@ -53,4 +53,4 @@ const Exchange = () => {
   );
 };
 
-export default Exchange;
+export default Exchanges;
